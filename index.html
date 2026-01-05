@@ -1,0 +1,105 @@
+<div class="container"
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Was soll ich kochen?</title>
+</head>
+<body>
+
+    <h1>🍽️ Was soll ich kochen?</h1>
+
+<label for="kategorie">Kategorie auswählen:</label>
+<select id="kategorie">
+    <option value="">Alle</option>
+    <option value="Teig">Teig</option>
+    <option value="Backen">Backen</option>
+    <option value="Käse">Käse</option>
+    <option value="Aufwendig">Aufwendig</option>
+    <option value="Kalt">Kalt</option>
+    <option value="Schnell">Schnell</option>
+    <option value="Fleisch">Fleisch</option>
+    <option value="Tomate">Tomate</option>
+    <option value="Nudeln">Nudeln</option>
+    <option value="Spätzle">Spätzle</option>
+    <option value="Reis">Reis</option>
+    <option value="Brot">Brot</option>
+    <option value="Asia">Asia</option>
+    <option value="Kartoffeln">Kartoffeln</option>
+    <option value="Beilage">Beilage</option>
+    <option value="Vegetarisch">Vegetarisch</option>
+</select>
+
+<br><br>
+<button onclick="zufaelligesGericht()">Zufälliges Gericht vorschlagen</button>
+
+<p id="ausgabe"></p>
+
+<script>
+const gerichte = [
+    { name: "Pizza", kategorien: ["Teig", "Backen", "Käse"] },
+    { name: "Zopf", kategorien: ["Backen", "Käse"] },
+    { name: "Flammkuchen", kategorien: ["Teig", "Backen", "Aufwendig"] },
+    { name: "Sandwiches", kategorien: ["Kalt", "Schnell"] },
+    { name: "Burger", kategorien: ["Käse", "Fleisch", "Aufwendig"] },
+    { name: "Nachos", kategorien: ["Käse", "Backen"] },
+    { name: "Burritos", kategorien: ["Käse", "Backen", "Fleisch", "Tomate"] },
+    { name: "Bolognese", kategorien: ["Tomate", "Nudeln", "Fleisch"] },
+    { name: "Carbonara", kategorien: ["Nudeln"] },
+    { name: "Risotto", kategorien: ["Reis", "Käse", "Aufwendig", "Vegetarisch"] },
+    { name: "Nudelauflauf", kategorien: ["Nudeln", "Käse", "Backen", "Vegetarisch"] },
+    { name: "Tortelliniauflauf", kategorien: ["Nudeln", "Tomate", "Käse", "Vegetarisch"] },
+    { name: "Kässpatzn", kategorien: ["Käse", "Vegetarisch"] },
+    { name: "Geschnetzeltes", kategorien: ["Spätzle", "Reis", "Fleisch"] },
+    { name: "Brotzeit", kategorien: ["Brot", "Schnell", "Kalt"] },
+    { name: "Hühnerfrikassee", kategorien: ["Reis", "Fleisch", "Aufwendig"] },
+    { name: "Asianudeln", kategorien: ["Nudeln", "Asia"] },
+    { name: "Asiafleisch", kategorien: ["Reis", "Asia", "Fleisch"] },
+    { name: "Schmandgemüse", kategorien: ["Kartoffeln", "Beilage", "Vegetarisch"] },
+    { name: "Baconröllchen", kategorien: ["Tomate", "Spätzle", "Nudeln", "Fleisch", "Käse"] },
+    { name: "Lasagne", kategorien: ["Tomate", "Fleisch", "Nudeln", "Käse"] },
+    { name: "Salat", kategorien: ["Schnell", "Kalt", "Vegetarisch"] },
+    { name: "Wraps", kategorien: ["Kalt", "Vegetarisch", "Schnell"] },
+    { name: "Chicken Wings", kategorien: ["Fleisch"] },
+    { name: "Pulled Chicken", kategorien: ["Fleisch"] },
+    { name: "Spinat", kategorien: ["Kartoffeln", "Vegetarisch"] },
+    { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Käse", "Vegetarisch"] },
+    { name: "Mettbrötchen", kategorien: ["Brot", "Fleisch", "Kalt", "Schnell"] },
+    { name: "Hackbällchen", kategorien: ["Fleisch"] },    
+    { name: "Bratkartoffeln", kategorien: ["Kartoffel", "Vegetarisch", "Aufwendig"] }
+];
+
+function zufaelligesGericht() {
+    const ausgewaehlteKategorie = document.getElementById("kategorie").value;
+
+    let passendeGerichte = gerichte;
+
+    if (ausgewaehlteKategorie !== "") {
+        passendeGerichte = gerichte.filter(g =>
+            g.kategorien.includes(ausgewaehlteKategorie)
+        );
+    }
+
+    if (passendeGerichte.length === 0) {
+        document.getElementById("ausgabe").textContent =
+            "❌ Kein Gericht in dieser Kategorie gefunden.";
+        return;
+    }
+
+    const zufall = Math.floor(Math.random() * passendeGerichte.length);
+    const gericht = passendeGerichte[zufall];
+
+    document.getElementById("ausgabe").textContent =
+        "👉 Du kochst heute: " + gericht.name;
+}
+</script>
+
+
+
+</body>
+</html>
+
+</div>
