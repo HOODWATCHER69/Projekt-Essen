@@ -32,7 +32,6 @@
             <option value="Brot">Brot</option>
             <option value="Asia">Asia</option>
             <option value="Kartoffeln">Kartoffeln</option>
-            <option value="Beilage">Beilage</option>
             <option value="Vegetarisch">Vegetarisch</option>
         </select>
 
@@ -64,7 +63,7 @@ const gerichte = [
     { name: "Hühnerfrikassee", kategorien: ["Reis", "Fleisch", "Aufwendig"] },
     { name: "Asianudeln", kategorien: ["Nudeln", "Asia"] },
     { name: "Asiafleisch", kategorien: ["Reis", "Asia", "Fleisch"] },
-    { name: "Schmandgemüse", kategorien: ["Kartoffeln", "Beilage", "Vegetarisch"] },
+    { name: "Schmandgemüse", kategorien: ["Kartoffeln", "Vegetarisch"] },
     { name: "Baconröllchen", kategorien: ["Tomate", "Spätzle", "Nudeln", "Fleisch", "Käse"] },
     { name: "Lasagne", kategorien: ["Tomate", "Fleisch", "Nudeln", "Käse"] },
     { name: "Salat", kategorien: ["Schnell", "Kalt", "Vegetarisch"] },
@@ -75,7 +74,13 @@ const gerichte = [
     { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Käse", "Vegetarisch"] },
     { name: "Mettbrötchen", kategorien: ["Brot", "Fleisch", "Kalt", "Schnell"] },
     { name: "Hackbällchen", kategorien: ["Fleisch"] },    
-    { name: "Bratkartoffeln", kategorien: ["Kartoffel", "Vegetarisch", "Aufwendig"] }
+    { name: "Bratkartoffeln", kategorien: ["Kartoffel", "Vegetarisch", "Aufwendig"] },
+    { name: "Tortellini (weiß)", kategorien: ["Nudeln", "Schnell"] },
+    { name: "Eiersalat", kategorien: ["Brot", "Schnell", "Vegetarisch", "Kalt"] },
+    { name: "Kartoffelsalat", kategorien: ["Kartoffeln", "Vegetarisch", "Aufwendig"] },
+    { name: "Grillen", kategorien: ["Fleisch", "Aufwändig"] },
+    { name: "Kasseler & Sauerkraut", kategorien: ["Fleisch", "Schnell"] },
+    { name: "Flammkuchen", kategorien: ["Aufwendig", "Backen"] }
 ];
 
 function zufaelligesGericht() {
@@ -113,6 +118,4 @@ if ("serviceWorker" in navigator) {
 </body>
 
 </html>
-
-
 
