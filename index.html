@@ -33,6 +33,7 @@
             <option value="Asia">Asia</option>
             <option value="Kartoffeln">Kartoffeln</option>
             <option value="Vegetarisch">Vegetarisch</option>
+            <option value="Süß">Süß</option>
         </select>
 
         <button onclick="zufaelligesGericht()">
@@ -81,6 +82,10 @@ const gerichte = [
     { name: "Grillen", kategorien: ["Fleisch", "Aufwändig"] },
     { name: "Kasseler & Sauerkraut", kategorien: ["Fleisch", "Schnell"] },
     { name: "Flammkuchen", kategorien: ["Aufwendig", "Backen"] }
+    { name: "Pfannkuchen", kategorien: ["Vegetarisch", "Süß"] }
+    { name: "Waffeln", kategorien: ["Vegetarisch", "Süß"] }
+    { name: "Nudeln mit Tomatensauce", kategorien: ["Vegetarisch", "Nudeln", "Schnell"] }
+    { name: "Kartoffelpuffer", kategorien: ["Aufwendig", "Vegetarisch" "Kartoffeln"] }
 ];
 
 function zufaelligesGericht() {
@@ -118,4 +123,5 @@ if ("serviceWorker" in navigator) {
 </body>
 
 </html>
+
 
