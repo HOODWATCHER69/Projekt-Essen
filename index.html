@@ -18,20 +18,10 @@
         <label for="kategorie">Kategorie auswählen:</label>
         <select id="kategorie">
             <option value="">Alle</option>
-            <option value="Teig">Teig</option>
-            <option value="Backen">Backen</option>
-            <option value="Käse">Käse</option>
-            <option value="Aufwendig">Aufwendig</option>
-            <option value="Kalt">Kalt</option>
             <option value="Schnell">Schnell</option>
-            <option value="Fleisch">Fleisch</option>
-            <option value="Tomate">Tomate</option>
             <option value="Nudeln">Nudeln</option>
             <option value="Spätzle">Spätzle</option>
             <option value="Reis">Reis</option>
-            <option value="Brot">Brot</option>
-            <option value="Asia">Asia</option>
-            <option value="Kartoffeln">Kartoffeln</option>
             <option value="Vegetarisch">Vegetarisch</option>
             <option value="Süß">Süß</option>
         </select>
@@ -46,46 +36,46 @@
 
 <script>
 const gerichte = [
-    { name: "Pizza", kategorien: ["Teig", "Backen", "Käse"] },
-    { name: "Zopf", kategorien: ["Backen", "Käse"] },
-    { name: "Flammkuchen", kategorien: ["Teig", "Backen", "Aufwendig"] },
-    { name: "Sandwiches", kategorien: ["Kalt", "Schnell"] },
-    { name: "Burger", kategorien: ["Käse", "Fleisch", "Aufwendig"] },
-    { name: "Nachos", kategorien: ["Käse", "Backen"] },
-    { name: "Burritos", kategorien: ["Käse", "Backen", "Fleisch", "Tomate"] },
-    { name: "Bolognese", kategorien: ["Tomate", "Nudeln", "Fleisch"] },
+    { name: "Pizza", kategorien: [] },
+    { name: "Zopf", kategorien: [] },
+    { name: "Flammkuchen", kategorien: [] },
+    { name: "Sandwiches", kategorien: ["Schnell"] },
+    { name: "Burger", kategorien: [] },
+    { name: "Nachos", kategorien: [] },
+    { name: "Burritos", kategorien: [] },
+    { name: "Bolognese", kategorien: ["Nudeln"] },
     { name: "Carbonara", kategorien: ["Nudeln"] },
-    { name: "Risotto", kategorien: ["Reis", "Käse", "Aufwendig", "Vegetarisch"] },
-    { name: "Nudelauflauf", kategorien: ["Nudeln", "Käse", "Backen", "Vegetarisch"] },
-    { name: "Tortelliniauflauf", kategorien: ["Nudeln", "Tomate", "Käse", "Vegetarisch"] },
-    { name: "Kässpatzn", kategorien: ["Käse", "Vegetarisch"] },
-    { name: "Geschnetzeltes", kategorien: ["Spätzle", "Reis", "Fleisch"] },
-    { name: "Brotzeit", kategorien: ["Brot", "Schnell", "Kalt"] },
-    { name: "Hühnerfrikassee", kategorien: ["Reis", "Fleisch", "Aufwendig"] },
-    { name: "Asianudeln", kategorien: ["Nudeln", "Asia"] },
-    { name: "Asiafleisch", kategorien: ["Reis", "Asia", "Fleisch"] },
-    { name: "Schmandgemüse", kategorien: ["Kartoffeln", "Vegetarisch"] },
-    { name: "Baconröllchen", kategorien: ["Tomate", "Spätzle", "Nudeln", "Fleisch", "Käse"] },
-    { name: "Lasagne", kategorien: ["Tomate", "Fleisch", "Nudeln", "Käse"] },
-    { name: "Salat", kategorien: ["Schnell", "Kalt", "Vegetarisch"] },
-    { name: "Wraps", kategorien: ["Kalt", "Vegetarisch", "Schnell"] },
-    { name: "Chicken Wings", kategorien: ["Fleisch"] },
-    { name: "Pulled Chicken", kategorien: ["Fleisch"] },
-    { name: "Spinat", kategorien: ["Kartoffeln", "Vegetarisch"] },
-    { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Käse", "Vegetarisch"] },
-    { name: "Mettbrötchen", kategorien: ["Brot", "Fleisch", "Kalt", "Schnell"] },
-    { name: "Hackbällchen", kategorien: ["Fleisch"] },    
-    { name: "Bratkartoffeln", kategorien: ["Kartoffeln", "Vegetarisch", "Aufwendig"] },
+    { name: "Risotto", kategorien: ["Reis", "Vegetarisch"] },
+    { name: "Nudelauflauf", kategorien: ["Nudeln", "Vegetarisch"] },
+    { name: "Tortelliniauflauf", kategorien: ["Nudeln", "Vegetarisch"] },
+    { name: "Kässpatzn", kategorien: ["Vegetarisch"] },
+    { name: "Geschnetzeltes", kategorien: ["Spätzle", "Reis"] },
+    { name: "Brotzeit", kategorien: ["Schnell"] },
+    { name: "Hühnerfrikassee", kategorien: ["Reis"] },
+    { name: "Asianudeln", kategorien: ["Nudeln"] },
+    { name: "Asiafleisch", kategorien: ["Reis"] },
+    { name: "Schmandgemüse", kategorien: ["Vegetarisch"] },
+    { name: "Baconröllchen", kategorien: ["Spätzle", "Nudeln"] },
+    { name: "Lasagne", kategorien: ["Nudeln"] },
+    { name: "Salat", kategorien: ["Schnell", "Vegetarisch"] },
+    { name: "Wraps", kategorien: ["Vegetarisch", "Schnell"] },
+    { name: "Chicken Wings", kategorien: [] },
+    { name: "Pulled Chicken", kategorien: [] },
+    { name: "Spinat", kategorien: ["Vegetarisch"] },
+    { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Vegetarisch"] },
+    { name: "Mettbrötchen", kategorien: ["Schnell"] },
+    { name: "Hackbällchen", kategorien: [] },    
+    { name: "Bratkartoffeln", kategorien: ["Vegetarisch"] },
     { name: "Tortellini (weiß)", kategorien: ["Nudeln", "Schnell"] },
-    { name: "Eiersalat", kategorien: ["Brot", "Schnell", "Vegetarisch", "Kalt"] },
-    { name: "Kartoffelsalat", kategorien: ["Kartoffeln", "Vegetarisch", "Aufwendig"] },
-    { name: "Grillen", kategorien: ["Fleisch", "Aufwendig"] },
-    { name: "Kasseler & Sauerkraut", kategorien: ["Fleisch", "Schnell"] },
-    { name: "Flammkuchen", kategorien: ["Aufwendig", "Backen"] },
+    { name: "Eiersalat", kategorien: ["Schnell", "Vegetarisch"] },
+    { name: "Kartoffelsalat", kategorien: ["Vegetarisch"] },
+    { name: "Grillen", kategorien: [] },
+    { name: "Kasseler & Sauerkraut", kategorien: ["Schnell"] },
+    { name: "Flammkuchen", kategorien: [] },
     { name: "Pfannkuchen", kategorien: ["Vegetarisch", "Süß"] },
     { name: "Waffeln", kategorien: ["Vegetarisch", "Süß"] },
     { name: "Nudeln mit Tomatensauce", kategorien: ["Vegetarisch", "Nudeln", "Schnell"] },
-    { name: "Kartoffelpuffer", kategorien: ["Aufwendig", "Vegetarisch", "Kartoffeln"] }
+    { name: "Kartoffelpuffer", kategorien: ["Vegetarisch"] }
 ];
 
 function zufaelligesGericht() {
@@ -123,6 +113,7 @@ if ("serviceWorker" in navigator) {
 </body>
 
 </html>
+
 
 
 
