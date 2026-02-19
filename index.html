@@ -7,42 +7,65 @@
     <title>Was soll ich kochen?</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#4f46e5">
-
 </head>
 
 <body>
-    <div class="container">
+<div class="container">
 
-        <h1>🍽️ Was soll ich kochen?</h1>
+    <h1>🍽️ Was soll ich kochen?</h1>
 
-        <label for="kategorie">Kategorie auswählen:</label>
-        <select id="kategorie">
-            <option value="">Alle</option>
-            <option value="Schnell">Schnell</option>
-            <option value="Nudeln">Nudeln</option>
-            <option value="Spätzle">Spätzle</option>
-            <option value="Reis">Reis</option>
-            <option value="Vegetarisch">Vegetarisch</option>
-            <option value="Süß">Süß</option>
-        </select>
+    <!-- MODUS AUSWAHL -->
+    <div class="modus-toggle">
+        <label class="modus-box">
+            <input type="checkbox" id="modusMichel">
+            Michel
+        </label>
 
-        <button onclick="zufaelligesGericht()">
-            🎲 Zufälliges Gericht vorschlagen
-        </button>
-
-        <div id="ausgabe" class="card"></div>
-
+        <label class="modus-box">
+            <input type="checkbox" id="modusNick">
+            Nick
+        </label>
     </div>
 
-<div class="modus-toggle">
-    <button id="modusA" class="modus-btn active">A-Gerichte</button>
-    <button id="modusB" class="modus-btn">B-Gerichte</button>
-</div>
+    <label for="kategorie">Kategorie auswählen:</label>
+    <select id="kategorie">
+        <option value="">Alle</option>
+        <option value="Schnell">Schnell</option>
+        <option value="Nudeln">Nudeln</option>
+        <option value="Spätzle">Spätzle</option>
+        <option value="Reis">Reis</option>
+        <option value="Vegetarisch">Vegetarisch</option>
+        <option value="Süß">Süß</option>
+    </select>
 
+    <button onclick="zufaelligesGericht()">
+        🎲 Zufälliges Gericht vorschlagen
+    </button>
+
+    <div id="ausgabe" class="card"></div>
+
+</div>
 
 <script>
 
-let aktuellerModus = "Michel";
+// ---------- EXKLUSIVE MODUS-AUSWAHL ----------
+
+const michelBox = document.getElementById("modusMichel");
+const nickBox = document.getElementById("modusNick");
+
+michelBox.addEventListener("change", function() {
+    if (this.checked) {
+        nickBox.checked = false;
+    }
+});
+
+nickBox.addEventListener("change", function() {
+    if (this.checked) {
+        michelBox.checked = false;
+    }
+});
+
+// ---------- GERICHTE ----------
 
 const gerichte = [
     { name: "Pizza", kategorien: [], modi: ["Nick"] },
@@ -73,7 +96,7 @@ const gerichte = [
     { name: "Spinat", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
     { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Vegetarisch"], modi: ["Michel", "Nick"] },
     { name: "Mettbrötchen", kategorien: ["Schnell"], modi: ["Michel", "Nick"] },
-    { name: "Hackbällchen", kategorien: [], modi: ["Michel", "Nick"] },    
+    { name: "Hackbällchen", kategorien: [], modi: ["Michel", "Nick"] },
     { name: "Bratkartoffeln", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
     { name: "Tortellini (weiß)", kategorien: ["Nudeln", "Schnell"], modi: ["Michel", "Nick"] },
     { name: "Eiersalat", kategorien: ["Schnell", "Vegetarisch"], modi: ["Michel", "Nick"] },
@@ -87,36 +110,26 @@ const gerichte = [
     { name: "Kartoffelpuffer", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] }
 ];
 
-
-// -------- MODUS BUTTONS --------
-
-document.getElementById("modusA").addEventListener("click", function() {
-    aktuellerModus = "Michel";
-    this.classList.add("active");
-    document.getElementById("modusB").classList.remove("active");
-});
-
-document.getElementById("modusB").addEventListener("click", function() {
-    aktuellerModus = "Nick";
-    this.classList.add("active");
-    document.getElementById("modusA").classList.remove("active");
-});
-
-
-// -------- HAUPTFUNKTION --------
+// ---------- HAUPTFUNKTION ----------
 
 function zufaelligesGericht() {
 
     const ausgewaehlteKategorie = document.getElementById("kategorie").value;
 
+    const michelAktiv = michelBox.checked;
+    const nickAktiv = nickBox.checked;
+
     let passendeGerichte = gerichte;
 
-    // 1️⃣ Nach Modus filtern
-    passendeGerichte = passendeGerichte.filter(g =>
-        g.modi.includes(aktuellerModus)
-    );
+    // Modus-Filter (nur wenn einer aktiv)
+    if (michelAktiv || nickAktiv) {
+        passendeGerichte = passendeGerichte.filter(g =>
+            (michelAktiv && g.modi.includes("Michel")) ||
+            (nickAktiv && g.modi.includes("Nick"))
+        );
+    }
 
-    // 2️⃣ Optional nach Kategorie filtern
+    // Kategorie-Filter
     if (ausgewaehlteKategorie !== "") {
         passendeGerichte = passendeGerichte.filter(g =>
             g.kategorien.includes(ausgewaehlteKategorie)
@@ -138,23 +151,11 @@ function zufaelligesGericht() {
 
 </script>
 
-
 <script>
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
 }
 </script>
 
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
