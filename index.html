@@ -34,64 +34,98 @@
 
     </div>
 
+<div class="modus-toggle">
+    <button id="modusA" class="modus-btn active">A-Gerichte</button>
+    <button id="modusB" class="modus-btn">B-Gerichte</button>
+</div>
+
+
 <script>
+
+let aktuellerModus = "Michel";
+
 const gerichte = [
-    { name: "Pizza", kategorien: [] },
-    { name: "Zopf", kategorien: [] },
-    { name: "Flammkuchen", kategorien: [] },
-    { name: "Sandwiches", kategorien: ["Schnell"] },
-    { name: "Burger", kategorien: [] },
-    { name: "Nachos", kategorien: [] },
-    { name: "Burritos", kategorien: [] },
-    { name: "Bolognese", kategorien: ["Nudeln"] },
-    { name: "Carbonara", kategorien: ["Nudeln"] },
-    { name: "Risotto", kategorien: ["Reis", "Vegetarisch"] },
-    { name: "Nudelauflauf", kategorien: ["Nudeln", "Vegetarisch"] },
-    { name: "Tortelliniauflauf", kategorien: ["Nudeln", "Vegetarisch"] },
-    { name: "Kässpatzn", kategorien: ["Vegetarisch"] },
-    { name: "Geschnetzeltes", kategorien: ["Spätzle", "Reis"] },
-    { name: "Brotzeit", kategorien: ["Schnell"] },
-    { name: "Hühnerfrikassee", kategorien: ["Reis"] },
-    { name: "Asianudeln", kategorien: ["Nudeln"] },
-    { name: "Asiafleisch", kategorien: ["Reis"] },
-    { name: "Schmandgemüse", kategorien: ["Vegetarisch"] },
-    { name: "Baconröllchen", kategorien: ["Spätzle", "Nudeln"] },
-    { name: "Lasagne", kategorien: ["Nudeln"] },
-    { name: "Salat", kategorien: ["Schnell", "Vegetarisch"] },
-    { name: "Wraps", kategorien: ["Vegetarisch", "Schnell"] },
-    { name: "Chicken Wings", kategorien: [] },
-    { name: "Pulled Chicken", kategorien: [] },
-    { name: "Spinat", kategorien: ["Vegetarisch"] },
-    { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Vegetarisch"] },
-    { name: "Mettbrötchen", kategorien: ["Schnell"] },
-    { name: "Hackbällchen", kategorien: [] },    
-    { name: "Bratkartoffeln", kategorien: ["Vegetarisch"] },
-    { name: "Tortellini (weiß)", kategorien: ["Nudeln", "Schnell"] },
-    { name: "Eiersalat", kategorien: ["Schnell", "Vegetarisch"] },
-    { name: "Kartoffelsalat", kategorien: ["Vegetarisch"] },
-    { name: "Grillen", kategorien: [] },
-    { name: "Kasseler & Sauerkraut", kategorien: ["Schnell"] },
-    { name: "Flammkuchen", kategorien: [] },
-    { name: "Pfannkuchen", kategorien: ["Vegetarisch", "Süß"] },
-    { name: "Waffeln", kategorien: ["Vegetarisch", "Süß"] },
-    { name: "Nudeln mit Tomatensauce", kategorien: ["Vegetarisch", "Nudeln", "Schnell"] },
-    { name: "Kartoffelpuffer", kategorien: ["Vegetarisch"] }
+    { name: "Pizza", kategorien: [], modi: ["Nick"] },
+    { name: "Zopf", kategorien: [], modi: ["Nick"] },
+    { name: "Flammkuchen", kategorien: [], modi: ["Nick"] },
+    { name: "Sandwiches", kategorien: ["Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Burger", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Nachos", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Burritos", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Bolognese", kategorien: ["Nudeln"], modi: ["Michel", "Nick"] },
+    { name: "Carbonara", kategorien: ["Nudeln"], modi: ["Michel", "Nick"] },
+    { name: "Risotto", kategorien: ["Reis", "Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Nudelauflauf", kategorien: ["Nudeln", "Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Tortelliniauflauf", kategorien: ["Nudeln", "Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Kässpatzn", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Geschnetzeltes", kategorien: ["Spätzle", "Reis"], modi: ["Michel", "Nick"] },
+    { name: "Brotzeit", kategorien: ["Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Hühnerfrikassee", kategorien: ["Reis"], modi: ["Michel", "Nick"] },
+    { name: "Asianudeln", kategorien: ["Nudeln"], modi: ["Michel", "Nick"] },
+    { name: "Asiafleisch", kategorien: ["Reis"], modi: ["Michel", "Nick"] },
+    { name: "Schmandgemüse", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Baconröllchen", kategorien: ["Spätzle", "Nudeln"], modi: ["Michel", "Nick"] },
+    { name: "Lasagne", kategorien: ["Nudeln"], modi: ["Michel", "Nick"] },
+    { name: "Salat", kategorien: ["Schnell", "Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Wraps", kategorien: ["Vegetarisch", "Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Chicken Wings", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Pulled Chicken", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Spinat", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Kartoffelgratin", kategorien: ["Kartoffeln", "Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Mettbrötchen", kategorien: ["Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Hackbällchen", kategorien: [], modi: ["Michel", "Nick"] },    
+    { name: "Bratkartoffeln", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Tortellini (weiß)", kategorien: ["Nudeln", "Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Eiersalat", kategorien: ["Schnell", "Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Kartoffelsalat", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] },
+    { name: "Grillen", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Kasseler & Sauerkraut", kategorien: ["Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Flammkuchen", kategorien: [], modi: ["Michel", "Nick"] },
+    { name: "Pfannkuchen", kategorien: ["Vegetarisch", "Süß"], modi: ["Michel", "Nick"] },
+    { name: "Waffeln", kategorien: ["Vegetarisch", "Süß"], modi: ["Michel", "Nick"] },
+    { name: "Nudeln mit Tomatensauce", kategorien: ["Vegetarisch", "Nudeln", "Schnell"], modi: ["Michel", "Nick"] },
+    { name: "Kartoffelpuffer", kategorien: ["Vegetarisch"], modi: ["Michel", "Nick"] }
 ];
 
+
+// -------- MODUS BUTTONS --------
+
+document.getElementById("modusA").addEventListener("click", function() {
+    aktuellerModus = "Michel";
+    this.classList.add("active");
+    document.getElementById("modusB").classList.remove("active");
+});
+
+document.getElementById("modusB").addEventListener("click", function() {
+    aktuellerModus = "Nick";
+    this.classList.add("active");
+    document.getElementById("modusA").classList.remove("active");
+});
+
+
+// -------- HAUPTFUNKTION --------
+
 function zufaelligesGericht() {
+
     const ausgewaehlteKategorie = document.getElementById("kategorie").value;
 
     let passendeGerichte = gerichte;
 
+    // 1️⃣ Nach Modus filtern
+    passendeGerichte = passendeGerichte.filter(g =>
+        g.modi.includes(aktuellerModus)
+    );
+
+    // 2️⃣ Optional nach Kategorie filtern
     if (ausgewaehlteKategorie !== "") {
-        passendeGerichte = gerichte.filter(g =>
+        passendeGerichte = passendeGerichte.filter(g =>
             g.kategorien.includes(ausgewaehlteKategorie)
         );
     }
 
     if (passendeGerichte.length === 0) {
         document.getElementById("ausgabe").textContent =
-            "❌ Kein Gericht in dieser Kategorie gefunden.";
+            "❌ Kein passendes Gericht gefunden.";
         return;
     }
 
@@ -101,7 +135,9 @@ function zufaelligesGericht() {
     document.getElementById("ausgabe").textContent =
         "👉 Vorschlag für heute: " + gericht.name;
 }
+
 </script>
+
 
 <script>
 if ("serviceWorker" in navigator) {
